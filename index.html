@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>りずりん🐷 | オンライン秘書・サポーター</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink-pale:  #fdf0f2;
+      --pink-light: #fce4e8;
+      --pink-mid:   #f4b8c2;
+      --pink-main:  #e07a8a;
+      --pink-dark:  #c4566a;
+      --peach:      #fce8d8;
+      --peach-mid:  #f5c4a4;
+      --brown:      #5c3d3d;
+      --brown-lt:   #9a7070;
+      --white:      #ffffff;
+      --off-white:  #fffaf9;
+      --sp: rgba(224,122,138,.14);
+      --ss: rgba(92,61,61,.07);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Zen Maru Gothic','Noto Sans JP',sans-serif;
+      background:var(--pink-pale);
+      color:var(--brown);
+      line-height:1.85;
+    }
+    body::before{
+      content:'';
+      position:fixed;inset:0;
+      background:
+        radial-gradient(ellipse at 10% 15%,rgba(252,228,232,.55) 0%,transparent 45%),
+        radial-gradient(ellipse at 88% 82%,rgba(252,232,216,.45) 0%,transparent 45%);
+      pointer-events:none;z-index:0;
+    }
+
+    /* ── HERO ── */
+    .hero{
+      position:relative;z-index:1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      min-height:88vh;
+      align-items:center;
+      overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background:linear-gradient(140deg,#fce8ea 0%,#fdf4f0 55%,#fce8d8 100%);
+      z-index:0;
+    }
+    .hero-bg::after{
+      content:'';position:absolute;inset:0;
+      background-image:
+        radial-gradient(circle,rgba(244,184,194,.3) 1px,transparent 1px),
+        radial-gradient(circle,rgba(252,196,164,.2) 1px,transparent 1px);
+      background-size:44px 44px,66px 66px;
+      background-position:0 0,22px 22px;
+    }
+    .hero-left{
+      position:relative;z-index:2;
+      padding:80px 40px 80px 64px;
+    }
+    .eyebrow{
+      display:inline-block;
+      background:linear-gradient(90deg,var(--pink-mid),var(--peach-mid));
+      color:var(--white);
+      font-size:.78rem;font-weight:700;
+      letter-spacing:2px;
+      padding:5px 18px;border-radius:999px;
+      margin-bottom:22px;
+    }
+    .hero h1{
+      font-size:clamp(1.9rem,3.2vw,3rem);
+      font-weight:700;color:var(--brown);
+      line-height:1.35;margin-bottom:4px;
+    }
+    .hero h1 .name{
+      color:var(--pink-dark);
+      display:block;
+      font-size:clamp(2.4rem,4vw,3.8rem);
+    }
+    .hero-desc{
+      font-size:.98rem;color:var(--brown-lt);
+      margin:18px 0 28px;
+      line-height:2;
+    }
+    .hero-desc strong{color:var(--brown);}
+    .qual-row{
+      display:flex;flex-wrap:wrap;gap:8px;
+      margin-bottom:36px;
+    }
+    .qual{
+      background:var(--white);
+      border:1.5px solid var(--pink-mid);
+      color:var(--pink-dark);
+      font-size:.8rem;font-weight:600;
+      padding:5px 14px;border-radius:999px;
+      box-shadow:0 2px 8px var(--sp);
+    }
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(135deg,var(--pink-dark) 0%,#e07a8a 100%);
+      color:var(--white);
+      font-size:1rem;font-weight:700;
+      padding:16px 38px;border-radius:999px;
+      text-decoration:none;
+      box-shadow:0 6px 28px rgba(196,86,106,.38);
+      transition:transform .2s,box-shadow .2s;
+      letter-spacing:.5px;
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(196,86,106,.48);}
+    .btn-ghost{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--white);color:var(--pink-dark);
+      font-size:.92rem;font-weight:600;
+      padding:14px 30px;border-radius:999px;
+      text-decoration:none;
+      border:2px solid var(--pink-mid);
+      box-shadow:0 2px 12px var(--ss);
+      transition:transform .2s;
+    }
+    .btn-ghost:hover{transform:translateY(-2px);}
+    .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+    .hero-right{
+      position:relative;z-index:2;
+      display:flex;align-items:center;justify-content:center;
+      padding:60px 60px 60px 20px;
+    }
+    .illust-wrap{
+      position:relative;
+      width:min(340px,90%);
+    }
+    .illust-wrap img{
+      width:100%;border-radius:50%;display:block;
+      box-shadow:0 16px 60px rgba(224,122,138,.3),
+                 0 0 0 8px var(--white),
+                 0 0 0 14px var(--pink-light);
+    }
+    .float-tag{
+      position:absolute;
+      background:var(--white);border-radius:14px;
+      padding:8px 14px;font-size:.78rem;font-weight:700;
+      color:var(--pink-dark);
+      box-shadow:0 4px 16px var(--sp);
+      border:1.5px solid var(--pink-light);
+      white-space:nowrap;
+      animation:bob 3s ease-in-out infinite;
+    }
+    .float-tag:nth-child(2){top:6%;right:-12%;animation-delay:0s;}
+    .float-tag:nth-child(3){bottom:20%;left:-16%;animation-delay:1.1s;}
+    .float-tag:nth-child(4){bottom:4%;right:-10%;animation-delay:2s;}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+    .hero-stripe{
+      position:absolute;bottom:0;left:0;right:0;height:5px;z-index:3;
+      background:linear-gradient(90deg,var(--pink-light),var(--peach-mid),var(--pink-mid),var(--peach-mid),var(--pink-light));
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar{
+      position:relative;z-index:1;
+      display:flex;justify-content:center;flex-wrap:wrap;gap:0;
+      background:var(--white);
+      border-top:3px solid var(--pink-light);
+      border-bottom:3px solid var(--pink-light);
+    }
+    .trust-item{
+      display:flex;align-items:center;gap:10px;
+      padding:22px 36px;
+      border-right:1px solid var(--pink-light);
+      font-size:.88rem;font-weight:600;color:var(--brown);
+    }
+    .trust-item:last-child{border-right:none;}
+    .trust-item .ti{font-size:1.4rem;}
+
+    /* ── CONTAINER ── */
+    .wrap{
+      position:relative;z-index:1;
+      max-width:860px;margin:0 auto;
+      padding:0 24px 80px;
+    }
+    .sec{margin-top:68px;}
+    .sec-title{
+      display:flex;align-items:center;gap:10px;
+      font-size:1.1rem;font-weight:700;
+      color:var(--pink-dark);
+      margin-bottom:26px;
+    }
+    .sec-title::after{
+      content:'';flex:1;height:2px;
+      background:linear-gradient(90deg,var(--pink-mid),transparent);
+      border-radius:2px;
+    }
+
+    /* ── TOKU/NIGATE ── */
+    .toku-nigate{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    }
+    .tn-card{
+      background:var(--white);border-radius:22px;
+      padding:28px 26px;
+      box-shadow:0 4px 22px var(--ss);
+      border:1.5px solid #f5dde0;
+    }
+    .tn-card h3{
+      font-size:1rem;font-weight:700;
+      color:var(--pink-dark);margin-bottom:16px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .tn-card ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+    .tn-card ul li{font-size:.88rem;display:flex;align-items:flex-start;gap:8px;}
+    .tn-card ul li::before{content:'◯';color:var(--pink-main);flex-shrink:0;font-weight:700;}
+    .tn-card.nigate ul li::before{content:'△';color:var(--peach-mid);}
+    @media(max-width:560px){.toku-nigate{grid-template-columns:1fr;}}
+
+    /* ── SERVICE CARDS ── */
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .service-card{
+      background:var(--white);
+      border-radius:22px;
+      padding:28px 22px;
+      text-align:center;
+      box-shadow:0 4px 22px var(--ss);
+      border:1.5px solid #f5dde0;
+      transition:transform .2s,box-shadow .2s;
+    }
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px var(--sp);}
+    .service-card .s-icon{font-size:2.2rem;margin-bottom:12px;display:block;}
+    .service-card h3{font-size:.95rem;font-weight:700;color:var(--pink-dark);margin-bottom:8px;}
+    .service-card p{font-size:.82rem;color:var(--brown-lt);line-height:1.7;}
+
+    /* ── EXPERIENCE ── */
+    .exp-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:12px;
+    }
+    .exp-item{
+      background:var(--off-white);
+      border:1.5px solid #f0d0d4;
+      border-radius:16px;
+      padding:14px 18px;
+      font-size:.88rem;
+      display:flex;align-items:flex-start;gap:10px;
+      transition:box-shadow .2s,transform .2s;
+    }
+    .exp-item:hover{box-shadow:0 4px 16px var(--sp);transform:translateY(-2px);}
+    .exp-item .em{flex-shrink:0;font-size:1.15rem;}
+
+    /* ── RIBEFES ── */
+    .rife-card{
+      display:grid;
+      grid-template-columns:240px 1fr;
+      gap:32px;
+      align-items:center;
+      background:var(--white);
+      border-radius:26px;
+      padding:32px;
+      box-shadow:0 4px 28px var(--ss);
+      border:1.5px solid #f5dde0;
+    }
+    .rife-card img{
+      width:100%;border-radius:16px;
+      box-shadow:0 6px 24px var(--sp);
+    }
+    .rife-card h3{
+      font-size:1.15rem;font-weight:700;
+      color:var(--pink-dark);margin-bottom:10px;
+    }
+    .rife-card p{font-size:.9rem;margin-bottom:10px;}
+    .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+    .tag{
+      background:linear-gradient(135deg,var(--pink-light),var(--peach));
+      color:var(--pink-dark);
+      padding:5px 14px;border-radius:999px;
+      font-size:.8rem;font-weight:600;
+      border:1px solid var(--pink-mid);
+    }
+
+    /* ── ENV ── */
+    .env-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+      gap:14px;
+    }
+    .env-item{
+      background:var(--white);
+      border-radius:18px;
+      padding:22px 18px;
+      text-align:center;
+      border:1.5px solid #f5dde0;
+      box-shadow:0 2px 14px var(--ss);
+      transition:transform .2s,box-shadow .2s;
+    }
+    .env-item:hover{transform:translateY(-3px);box-shadow:0 6px 20px var(--sp);}
+    .env-item .e-icon{font-size:2rem;margin-bottom:10px;display:block;}
+    .env-item .e-name{font-size:.88rem;font-weight:700;color:var(--pink-dark);margin-bottom:4px;}
+    .env-item .e-desc{font-size:.76rem;color:var(--brown-lt);}
+
+    /* ── HOURS ── */
+    .hours-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    }
+    .h-card{
+      background:linear-gradient(135deg,#fce8ea,#fef4f0);
+      border-radius:20px;padding:28px 24px;
+      text-align:center;
+      border:1.5px solid #f4c8d0;
+      box-shadow:0 2px 12px var(--sp);
+    }
+    .h-card .day{font-size:.82rem;color:var(--brown-lt);margin-bottom:6px;letter-spacing:1px;}
+    .h-card .time{font-size:1.5rem;font-weight:700;color:var(--pink-dark);}
+    .h-note{margin-top:16px;text-align:center;font-size:.88rem;color:var(--brown-lt);}
+
+    /* ── ABOUT ── */
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 240px;
+      gap:28px;align-items:start;
+    }
+    .card{
+      background:var(--white);border-radius:24px;
+      padding:30px;
+      box-shadow:0 4px 24px var(--ss);
+      border:1px solid #f5dde0;
+    }
+    .card p{font-size:.93rem;margin-bottom:12px;}
+    .card p:last-child{margin-bottom:0;}
+    .accent-img{
+      border-radius:18px;overflow:hidden;
+      box-shadow:0 8px 32px var(--sp);
+      border:3px solid var(--white);
+      outline:2px solid var(--pink-light);
+    }
+    .accent-img img{width:100%;display:block;}
+    .accent-cap{
+      text-align:center;font-size:.72rem;
+      color:var(--brown-lt);margin-top:6px;letter-spacing:1px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-sec{
+      position:relative;z-index:1;
+      margin-top:80px;
+      background:linear-gradient(135deg,#fce8ea 0%,#fef0e8 50%,#fce8ea 100%);
+      padding:88px 24px;text-align:center;overflow:hidden;
+    }
+    .contact-sec::before{
+      content:'𓂃 𓈒 𓏸 𓂃 𓈒 𓏸 𓂃 𓈒 𓏸 𓂃 𓈒 𓏸';
+      position:absolute;top:18px;left:0;right:0;
+      font-size:11px;letter-spacing:8px;
+      color:var(--pink-main);opacity:.25;
+    }
+    .contact-sec::after{
+      content:'𓂃 𓈒 𓏸 𓂃 𓈒 𓏸 𓂃 𓈒 𓏸 𓂃 𓈒 𓏸';
+      position:absolute;bottom:18px;left:0;right:0;
+      font-size:11px;letter-spacing:8px;
+      color:var(--pink-main);opacity:.25;
+    }
+    .contact-inner{max-width:580px;margin:0 auto;}
+    .contact-sec h2{
+      font-size:clamp(1.5rem,3vw,2.1rem);
+      font-weight:700;color:var(--pink-dark);
+      margin-bottom:14px;
+    }
+    .contact-sec .sub{
+      font-size:.95rem;color:var(--brown-lt);margin-bottom:6px;
+    }
+    .contact-sec .dm-text{
+      display:inline-block;
+      font-size:1.05rem;font-weight:700;
+      color:var(--pink-dark);
+      margin:8px 0 0;
+      background:var(--white);
+      padding:12px 32px;border-radius:999px;
+      box-shadow:0 2px 14px var(--sp);
+      border:1.5px solid var(--pink-mid);
+    }
+    .contact-btns{
+      display:flex;flex-wrap:wrap;justify-content:center;
+      gap:16px;margin-top:36px;
+    }
+    .btn-ig{
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(135deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888);
+      color:var(--white);
+      font-size:1rem;font-weight:700;
+      padding:16px 36px;border-radius:999px;
+      text-decoration:none;
+      box-shadow:0 6px 24px rgba(220,39,67,.28);
+      transition:transform .2s,box-shadow .2s;
+    }
+    .btn-ig:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(220,39,67,.38);}
+    .avail-chip{
+      margin-top:26px;display:inline-block;
+      background:var(--white);border-radius:999px;
+      padding:9px 26px;font-size:.83rem;
+      color:var(--brown-lt);
+      box-shadow:0 2px 10px var(--ss);
+      border:1px solid #f5dde0;
+    }
+
+    /* ── FOOTER ── */
+    footer{
+      position:relative;z-index:1;
+      background:linear-gradient(135deg,#fce8ea,#fdf6f0);
+      text-align:center;padding:32px 20px;
+      font-size:.82rem;color:var(--brown-lt);
+      border-top:1px solid var(--pink-light);
+    }
+    footer .deco{font-size:10px;letter-spacing:5px;color:var(--pink-main);opacity:.5;margin-bottom:7px;}
+    footer a{color:var(--pink-dark);text-decoration:none;}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:720px){
+      .hero{grid-template-columns:1fr;min-height:auto;}
+      .hero-left{padding:56px 24px 16px;}
+      .hero-right{padding:16px 24px 56px;}
+      .illust-wrap{width:min(260px,78%);}
+      .float-tag{display:none;}
+      .service-grid{grid-template-columns:1fr 1fr;}
+      .rife-card{grid-template-columns:1fr;}
+      .about-grid{grid-template-columns:1fr;}
+      .hours-grid{grid-template-columns:1fr;}
+      .trust-item{padding:18px 22px;}
+    }
+    @media(max-width:480px){
+      .service-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-left">
+    <span class="eyebrow">✎𓂃 オンライン秘書 × フッ軽サポーター 𓂃✎</span>
+
+    <h1>
+      あなたの「やりたい」を、<br>一緒に形にします。
+      <span class="name">りずりん🐷</span>
+    </h1>
+
+    <p class="hero-desc">
+      スプシ管理・資料作成・リサーチ・スケジュール調整まで<br>
+      <strong>「即レス」と「思いやり」</strong>を軸に、全力でお応えします🫧
+    </p>
+
+    <div class="qual-row">
+      <span class="qual">📊 簿記3級</span>
+      <span class="qual">📋 秘書検定3級</span>
+      <span class="qual">🧾 FP3級</span>
+      <span class="qual">🤖 スプシ × AI 勉強中</span>
+    </div>
+
+    <div class="cta-row">
+      <a href="#contact" class="btn-primary">📩 お仕事のご依頼はこちら →</a>
+      <a href="#services" class="btn-ghost">🔍 できることを見る</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="illust-wrap">
+      <img src="images/main.jpg" alt="りずりんのイラスト" />
+      <div class="float-tag">💌 即レス対応</div>
+      <div class="float-tag">📊 スプシ得意</div>
+      <div class="float-tag">🐷 フッ軽サポート</div>
+    </div>
+  </div>
+
+  <div class="hero-stripe"></div>
+</header>
+
+<!-- ══ TRUST BAR ══ -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="ti">📊</span>簿記3級取得</div>
+  <div class="trust-item"><span class="ti">📋</span>秘書検定3級取得</div>
+  <div class="trust-item"><span class="ti">⏰</span>平日18時〜＋土日対応</div>
+  <div class="trust-item"><span class="ti">💌</span>即レス・思いやり重視</div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div class="wrap">
+
+  <!-- Services -->
+  <section class="sec" id="services">
+    <h2 class="sec-title">✎𓂃 お任せできること</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <span class="s-icon">📊</span>
+        <h3>データ管理・<br>スプレッドシート</h3>
+        <p>Googleスプレッドシートでの集計・整理・管理をお任せください</p>
+      </div>
+      <div class="service-card">
+        <span class="s-icon">📝</span>
+        <h3>資料・書類作成</h3>
+        <p>チラシ・見積書・名刺・提案資料などCanvaを使った制作も対応</p>
+      </div>
+      <div class="service-card">
+        <span class="s-icon">🔍</span>
+        <h3>リサーチ・<br>調査代行</h3>
+        <p>市場調査・競合分析・営業調査などの情報収集をサポート</p>
+      </div>
+      <div class="service-card">
+        <span class="s-icon">📅</span>
+        <h3>スケジュール・<br>顧客対応</h3>
+        <p>日程調整・メール対応・予約管理など秘書業務全般をお手伝い</p>
+      </div>
+      <div class="service-card">
+        <span class="s-icon">📸</span>
+        <h3>SNS運用サポート</h3>
+        <p>Instagram運用・競合分析・クーポン発行など運用業務を支援</p>
+      </div>
+      <div class="service-card">
+        <span class="s-icon">🧑‍💻</span>
+        <h3>その他バックオフィス</h3>
+        <p>在庫管理・給与明細発行など、こまごました事務作業もお気軽に</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="sec" id="experience">
+    <h2 class="sec-title">🦁 これまでの経験</h2>
+    <div class="exp-grid">
+      <div class="exp-item"><span class="em">🛀</span>Instagram運用（フォロワー限定クーポン発行）</div>
+      <div class="exp-item"><span class="em">👩🏼‍💻</span>インスタ競合分析</div>
+      <div class="exp-item"><span class="em">📊</span>営業調査代行</div>
+      <div class="exp-item"><span class="em">🛍️</span>市場調査</div>
+      <div class="exp-item"><span class="em">📰</span>チラシ作成</div>
+      <div class="exp-item"><span class="em">🧑‍💻</span>見積書作成</div>
+      <div class="exp-item"><span class="em">📇</span>名刺作成</div>
+      <div class="exp-item"><span class="em">💴</span>給料明細発行</div>
+      <div class="exp-item"><span class="em">🧑‍💻</span>商品在庫振分</div>
+      <div class="exp-item"><span class="em">🎀</span>制服販売・受付スタッフ</div>
+    </div>
+  </section>
+
+  <!-- リベフェス -->
+  <section class="sec">
+    <h2 class="sec-title">🐷 リベフェス2025</h2>
+    <div class="card">
+      <h3 style="font-size:1.1rem;font-weight:700;color:var(--pink-dark);margin-bottom:12px;">No.F17「からあげ1番」サブリーダー担当</h3>
+      <p>お金の勉強フェス2025にてブースのサブリーダーとして参加。チームの取りまとめから受付・接客・運営サポートまで担当しました。</p>
+      <p>この経験が<strong>オンライン秘書への原点</strong>🪽</p>
+      <div class="tag-row" style="margin-top:14px;">
+        <span class="tag">🐷 サブリーダー</span>
+        <span class="tag">🎀 受付・接客</span>
+        <span class="tag">📋 運営サポート</span>
+        <span class="tag">🤝 チームワーク</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 得意・苦手 -->
+  <section class="sec" id="toku-nigate">
+    <h2 class="sec-title">✎𓂃 得意なこと・苦手なこと</h2>
+    <div class="toku-nigate">
+      <div class="tn-card">
+        <h3>💪 得意なこと</h3>
+        <ul>
+          <li>Googleスプレッドシートでのデータ管理📊</li>
+          <li>Canvaでの資料・デザイン作成🎨</li>
+          <li>顧客対応・スケジュール調整💌</li>
+          <li>物事を前向きにとらえ、言語化して行動すること</li>
+          <li>新しい環境にすぐ慣れる</li>
+          <li>最後までやり抜く力</li>
+          <li>人と仲良くなること🫶</li>
+        </ul>
+      </div>
+      <div class="tn-card nigate">
+        <h3>🥺 苦手なこと</h3>
+        <ul>
+          <li>力仕事</li>
+          <li>お化け👻</li>
+          <li>生魚<br><span style="font-size:.8rem;color:var(--brown-lt);">→ 茹で魚・焼き魚は大好き😋</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 作業環境 -->
+  <section class="sec" id="env">
+    <h2 class="sec-title">💻 作業環境</h2>
+    <div class="env-grid">
+      <div class="env-item">
+        <span class="e-icon">🎨</span>
+        <div class="e-name">Canva PRO</div>
+        <div class="e-desc">デザイン・資料作成</div>
+      </div>
+      <div class="env-item">
+        <span class="e-icon">🤖</span>
+        <div class="e-name">Claude Max</div>
+        <div class="e-desc">AI活用・業務効率化</div>
+      </div>
+      <div class="env-item">
+        <span class="e-icon">📱</span>
+        <div class="e-name">iPhone 17</div>
+        <div class="e-desc">即レス・機動力</div>
+      </div>
+      <div class="env-item">
+        <span class="e-icon">📊</span>
+        <div class="e-name">Google スプシ</div>
+        <div class="e-desc">データ管理・集計</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About + accent -->
+  <section class="sec" id="about">
+    <h2 class="sec-title">✎𓂃 わたしについて</h2>
+    <div class="card">
+      <p>リベフェスをきっかけに<strong>オンライン秘書</strong>を目指してスキルアップ中です。</p>
+      <p>現在は<strong>スプシとAIの勉強</strong>を日々積み重ね、より幅広い業務に対応できるよう準備しています。</p>
+      <p>フッ軽で動くこと・人の役に立つこと・応援することが大好き♡<br>
+      <strong>「お願いしてよかった」</strong>と言ってもらえるのが一番の喜びです🫧</p>
+    </div>
+  </section>
+
+  <!-- Hours -->
+  <section class="sec" id="hours">
+    <h2 class="sec-title">⏰ 稼働時間</h2>
+    <div class="hours-grid">
+      <div class="h-card">
+        <div class="day">平日</div>
+        <div class="time">18:00 〜 22:00</div>
+      </div>
+      <div class="h-card">
+        <div class="day">土日</div>
+        <div class="time">終日対応可 ♡</div>
+      </div>
+    </div>
+    <p class="h-note">💌 限られた時間でも「<strong>即レス</strong>」と「<strong>思いやり</strong>」を大切にします🫧</p>
+  </section>
+
+</div>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact-sec" id="contact">
+  <div class="contact-inner">
+    <h2>お仕事のご依頼・<br>ご相談はお気軽に🪽</h2>
+    <p class="sub">スプシ管理・リサーチ・資料作成・スケジュール調整など</p>
+    <p class="dm-text">✎𓂃 お仕事のご依頼はDMにてお願いします 𓂃✎</p>
+    <p class="sub" style="margin-top:14px;">💬 「こんなことできる？」のお問い合わせも大歓迎です♡</p>
+
+    <div class="contact-btns">
+      <a href="#services" class="btn-ghost">🔍 できることを見る</a>
+    </div>
+
+    <div class="avail-chip">⏰ 平日 18:00〜22:00 ／ 土日終日 対応可</div>
+  </div>
+</section>
+
+<footer>
+  <div class="deco">𓂃 𓈒 𓏸 𓂃 𓈒 𓏸 𓂃 𓈒 𓏸</div>
+  <p><strong>りずりん🐷</strong> ｜ オンライン秘書・フッ軽サポーター</p>
+  <p style="margin-top:5px;">📩 お仕事のご依頼はDMにてお気軽にどうぞ🫧</p>
+</footer>
+
+</body>
+</html>
