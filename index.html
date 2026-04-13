@@ -4,6 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>りずりん🐷 | オンライン秘書・サポーター</title>
+
+  <!-- OGP -->
+  <meta property="og:title" content="りずりん🐷 | オンライン秘書・サポーター" />
+  <meta property="og:description" content="あなたの「やりたい」を、一緒に形にします！資料作成・リサーチ・SNS運用・応援サポートなど、お気軽にDMください🐷" />
+  <meta property="og:image" content="images/ogp.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="りずりん🐷 | オンライン秘書・サポーター" />
+  <meta name="twitter:description" content="あなたの「やりたい」を、一緒に形にします！" />
+  <meta name="twitter:image" content="images/ogp.jpg" />
+  <meta name="description" content="オンライン秘書りずりん🐷 資料作成・リサーチ・SNS運用・応援サポート面談。リピート率100%！お気軽にDMください。" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
@@ -39,6 +55,51 @@
       pointer-events:none;z-index:0;
     }
 
+    /* ── NAV ── */
+    .site-nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(12px);
+      border-bottom:1.5px solid var(--pink-light);
+      padding:0 24px;
+    }
+    .nav-inner{
+      max-width:960px;margin:0 auto;
+      display:flex;align-items:center;justify-content:space-between;
+      height:52px;
+    }
+    .nav-logo{
+      font-size:.92rem;font-weight:700;color:var(--pink-dark);
+      text-decoration:none;
+    }
+    .nav-links{display:flex;gap:24px;list-style:none;}
+    .nav-links a{
+      font-size:.82rem;font-weight:600;color:var(--brown);
+      text-decoration:none;transition:color .2s;
+    }
+    .nav-links a:hover{color:var(--pink-dark);}
+    .nav-links .nav-cta{
+      background:linear-gradient(135deg,var(--pink-dark),var(--pink-main));
+      color:var(--white);
+      padding:6px 18px;border-radius:999px;
+      font-size:.78rem;
+    }
+    .nav-links .nav-cta:hover{color:var(--white);opacity:.9;}
+    .nav-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--brown);}
+    @media(max-width:720px){
+      .nav-links{
+        display:none;
+        flex-direction:column;
+        position:absolute;top:52px;left:0;right:0;
+        background:rgba(255,255,255,.96);
+        backdrop-filter:blur(12px);
+        padding:16px 24px;gap:16px;
+        border-bottom:1.5px solid var(--pink-light);
+      }
+      .nav-links.open{display:flex;}
+      .nav-toggle{display:block;}
+    }
+
     /* ── HERO ── */
     .hero{
       position:relative;z-index:1;
@@ -47,6 +108,7 @@
       min-height:88vh;
       align-items:center;
       overflow:hidden;
+      margin-top:52px;
     }
     .hero-bg{
       position:absolute;inset:0;
@@ -79,11 +141,6 @@
       font-weight:700;color:var(--brown);
       line-height:1.35;margin-bottom:4px;
     }
-    .hero h1 .name{
-      color:var(--pink-dark);
-      display:block;
-      font-size:clamp(2.4rem,4vw,3.8rem);
-    }
     .hero-desc{
       font-size:.98rem;color:var(--brown-lt);
       margin:18px 0 28px;
@@ -92,7 +149,7 @@
     .hero-desc strong{color:var(--brown);}
     .qual-row{
       display:flex;flex-wrap:wrap;gap:8px;
-      margin-bottom:36px;
+      margin-bottom:20px;
     }
     .qual{
       background:var(--white);
@@ -102,6 +159,24 @@
       padding:5px 14px;border-radius:999px;
       box-shadow:0 2px 8px var(--sp);
     }
+
+    /* ── STAT ROW (Hero内) ── */
+    .stat-row{
+      display:flex;align-items:center;justify-content:center;
+      flex-wrap:wrap;gap:0;
+      background:var(--off-white);border-radius:14px;
+      border:1px solid var(--pink-light);
+      padding:10px 16px;margin-bottom:28px;
+    }
+    .stat-mini{
+      display:flex;flex-direction:column;align-items:center;gap:2px;
+      padding:4px 18px;
+    }
+    .sm-icon{font-size:1rem;line-height:1;}
+    .sm-num{font-size:1rem;font-weight:700;color:var(--pink-dark);line-height:1;}
+    .sm-label{font-size:.65rem;color:var(--brown-lt);letter-spacing:.5px;}
+    .stat-sep{width:1px;height:28px;background:var(--pink-light);}
+
     .btn-primary{
       display:inline-flex;align-items:center;gap:10px;
       background:linear-gradient(135deg,var(--pink-dark) 0%,#e07a8a 100%);
@@ -177,13 +252,55 @@
     .trust-item:last-child{border-right:none;}
     .trust-item .ti{font-size:1.4rem;}
 
+    /* ── PAIN POINTS ── */
+    .pain-sec{
+      position:relative;z-index:1;
+      background:var(--white);
+      padding:64px 24px;
+      border-bottom:3px solid var(--pink-light);
+      overflow:hidden;
+    }
+    .pain-inner{max-width:760px;margin:0 auto;text-align:center;}
+    .pain-sec h2{
+      font-size:clamp(1.2rem,2.5vw,1.7rem);
+      font-weight:700;color:var(--brown);
+      margin-bottom:10px;
+    }
+    .pain-sec h2 span{color:var(--pink-dark);}
+    .pain-sec .pain-sub{font-size:.9rem;color:var(--brown-lt);margin-bottom:36px;}
+    .pain-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;margin-bottom:32px;
+    }
+    .pain-item{
+      background:var(--pink-pale);
+      border:1.5px solid var(--pink-light);
+      border-radius:18px;
+      padding:18px 20px;
+      font-size:.9rem;
+      text-align:left;
+      display:flex;align-items:flex-start;gap:10px;
+      line-height:1.7;
+    }
+    .pain-item .pi{flex-shrink:0;font-size:1.2rem;}
+    .pain-answer{
+      display:inline-block;
+      background:linear-gradient(135deg,var(--pink-light),var(--peach));
+      border-radius:999px;
+      padding:12px 32px;
+      font-size:1rem;font-weight:700;
+      color:var(--pink-dark);
+      border:1.5px solid var(--pink-mid);
+    }
+
     /* ── CONTAINER ── */
     .wrap{
       position:relative;z-index:1;
       max-width:860px;margin:0 auto;
       padding:0 24px 80px;
     }
-    .sec{margin-top:68px;}
+    .sec{margin-top:52px;}
     .sec-title{
       display:flex;align-items:center;gap:10px;
       font-size:1.1rem;font-weight:700;
@@ -195,6 +312,79 @@
       background:linear-gradient(90deg,var(--pink-mid),transparent);
       border-radius:2px;
     }
+
+    /* ── SERVICE LABEL ── */
+    .service-label{
+      font-size:.85rem;font-weight:700;
+      color:var(--brown-lt);
+      margin:16px 0 10px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .service-label::before{
+      content:'';
+      display:inline-block;width:4px;height:14px;
+      background:linear-gradient(180deg,var(--pink-dark),var(--pink-mid));
+      border-radius:2px;
+      flex-shrink:0;
+    }
+
+    /* ── SERVICE CARDS ── */
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+    }
+    .service-grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .service-card{
+      background:var(--white);
+      border-radius:22px;
+      padding:28px 22px;
+      text-align:center;
+      box-shadow:0 4px 22px var(--ss);
+      border:1.5px solid #f5dde0;
+      transition:transform .2s,box-shadow .2s;
+      position:relative;
+    }
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px var(--sp);}
+    .service-card .s-icon{font-size:2.2rem;margin-bottom:12px;display:block;}
+    .service-card h3{font-size:.95rem;font-weight:700;color:var(--pink-dark);margin-bottom:8px;}
+    .service-card p{font-size:.82rem;color:var(--brown-lt);line-height:1.7;}
+
+    /* ── FLOW ── */
+    .flow-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:0;
+      position:relative;
+    }
+    .flow-grid::before{
+      content:'';
+      position:absolute;top:36px;left:16%;right:16%;height:2px;
+      background:linear-gradient(90deg,var(--pink-mid),var(--peach-mid),var(--pink-mid));
+      z-index:0;
+    }
+    .flow-step{
+      position:relative;z-index:1;
+      text-align:center;
+      padding:0 12px;
+    }
+    .flow-num{
+      width:56px;height:56px;
+      background:linear-gradient(135deg,var(--pink-dark),var(--pink-main));
+      color:var(--white);
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.2rem;font-weight:700;
+      margin:0 auto 14px;
+      box-shadow:0 4px 16px rgba(196,86,106,.3);
+      border:3px solid var(--white);
+    }
+    .flow-step h3{font-size:.95rem;font-weight:700;color:var(--pink-dark);margin-bottom:6px;}
+    .flow-step p{font-size:.82rem;color:var(--brown-lt);line-height:1.7;}
 
     /* ── TOKU/NIGATE ── */
     .toku-nigate{
@@ -215,117 +405,26 @@
     .tn-card ul li{font-size:.88rem;display:flex;align-items:flex-start;gap:8px;}
     .tn-card ul li::before{content:'◯';color:var(--pink-main);flex-shrink:0;font-weight:700;}
     .tn-card.nigate ul li::before{content:'△';color:var(--peach-mid);}
-    @media(max-width:560px){.toku-nigate{grid-template-columns:1fr;}}
 
-    /* ── SERVICE CARDS ── */
-    .service-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-    }
-    .service-card{
-      background:var(--white);
-      border-radius:22px;
-      padding:28px 22px;
-      text-align:center;
-      box-shadow:0 4px 22px var(--ss);
-      border:1.5px solid #f5dde0;
-      transition:transform .2s,box-shadow .2s;
-    }
-    .service-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px var(--sp);}
-    .service-card .s-icon{font-size:2.2rem;margin-bottom:12px;display:block;}
-    .service-card h3{font-size:.95rem;font-weight:700;color:var(--pink-dark);margin-bottom:8px;}
-    .service-card p{font-size:.82rem;color:var(--brown-lt);line-height:1.7;}
-
-    /* ── EXPERIENCE ── */
-    .exp-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-      gap:12px;
-    }
-    .exp-item{
-      background:var(--off-white);
-      border:1.5px solid #f0d0d4;
-      border-radius:16px;
-      padding:14px 18px;
-      font-size:.88rem;
-      display:flex;align-items:flex-start;gap:10px;
-      transition:box-shadow .2s,transform .2s;
-    }
-    .exp-item:hover{box-shadow:0 4px 16px var(--sp);transform:translateY(-2px);}
-    .exp-item .em{flex-shrink:0;font-size:1.15rem;}
-
-    /* ── RIBEFES ── */
-    .rife-card{
-      display:grid;
-      grid-template-columns:240px 1fr;
-      gap:32px;
-      align-items:center;
-      background:var(--white);
-      border-radius:26px;
-      padding:32px;
-      box-shadow:0 4px 28px var(--ss);
-      border:1.5px solid #f5dde0;
-    }
-    .rife-card img{
-      width:100%;border-radius:16px;
-      box-shadow:0 6px 24px var(--sp);
-    }
-    .rife-card h3{
-      font-size:1.15rem;font-weight:700;
-      color:var(--pink-dark);margin-bottom:10px;
-    }
-    .rife-card p{font-size:.9rem;margin-bottom:10px;}
-    .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-    .tag{
-      background:linear-gradient(135deg,var(--pink-light),var(--peach));
-      color:var(--pink-dark);
-      padding:5px 14px;border-radius:999px;
-      font-size:.8rem;font-weight:600;
-      border:1px solid var(--pink-mid);
-    }
-
-    /* ── ENV ── */
-    .env-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-      gap:14px;
-    }
-    .env-item{
-      background:var(--white);
-      border-radius:18px;
-      padding:22px 18px;
-      text-align:center;
-      border:1.5px solid #f5dde0;
-      box-shadow:0 2px 14px var(--ss);
-      transition:transform .2s,box-shadow .2s;
-    }
-    .env-item:hover{transform:translateY(-3px);box-shadow:0 6px 20px var(--sp);}
-    .env-item .e-icon{font-size:2rem;margin-bottom:10px;display:block;}
-    .env-item .e-name{font-size:.88rem;font-weight:700;color:var(--pink-dark);margin-bottom:4px;}
-    .env-item .e-desc{font-size:.76rem;color:var(--brown-lt);}
-
-    /* ── HOURS ── */
-    .hours-grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:16px;
-    }
-    .h-card{
+    /* ── HOURS (compact) ── */
+    .hours-compact{
+      display:flex;align-items:center;justify-content:center;
+      gap:20px;flex-wrap:wrap;
+      margin-top:24px;
       background:linear-gradient(135deg,#fce8ea,#fef4f0);
-      border-radius:20px;padding:28px 24px;
-      text-align:center;
+      border-radius:18px;padding:18px 24px;
       border:1.5px solid #f4c8d0;
-      box-shadow:0 2px 12px var(--sp);
+      font-size:.88rem;
     }
-    .h-card .day{font-size:.82rem;color:var(--brown-lt);margin-bottom:6px;letter-spacing:1px;}
-    .h-card .time{font-size:1.5rem;font-weight:700;color:var(--pink-dark);}
-    .h-note{margin-top:16px;text-align:center;font-size:.88rem;color:var(--brown-lt);}
+    .hours-compact .hc-item{
+      display:flex;align-items:center;gap:8px;
+    }
+    .hours-compact .hc-label{color:var(--brown-lt);font-weight:500;}
+    .hours-compact .hc-time{font-weight:700;color:var(--pink-dark);}
+    .hours-compact .hc-sep{width:1px;height:20px;background:var(--pink-mid);opacity:.4;}
+    .hours-compact .hc-note{font-size:.82rem;color:var(--brown-lt);}
 
-    /* ── ABOUT ── */
-    .about-grid{
-      display:grid;
-      grid-template-columns:1fr 240px;
-      gap:28px;align-items:start;
-    }
+    /* ── CARD ── */
     .card{
       background:var(--white);border-radius:24px;
       padding:30px;
@@ -334,17 +433,6 @@
     }
     .card p{font-size:.93rem;margin-bottom:12px;}
     .card p:last-child{margin-bottom:0;}
-    .accent-img{
-      border-radius:18px;overflow:hidden;
-      box-shadow:0 8px 32px var(--sp);
-      border:3px solid var(--white);
-      outline:2px solid var(--pink-light);
-    }
-    .accent-img img{width:100%;display:block;}
-    .accent-cap{
-      text-align:center;font-size:.72rem;
-      color:var(--brown-lt);margin-top:6px;letter-spacing:1px;
-    }
 
     /* ── CONTACT ── */
     .contact-sec{
@@ -384,21 +472,6 @@
       box-shadow:0 2px 14px var(--sp);
       border:1.5px solid var(--pink-mid);
     }
-    .contact-btns{
-      display:flex;flex-wrap:wrap;justify-content:center;
-      gap:16px;margin-top:36px;
-    }
-    .btn-ig{
-      display:inline-flex;align-items:center;gap:10px;
-      background:linear-gradient(135deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888);
-      color:var(--white);
-      font-size:1rem;font-weight:700;
-      padding:16px 36px;border-radius:999px;
-      text-decoration:none;
-      box-shadow:0 6px 24px rgba(220,39,67,.28);
-      transition:transform .2s,box-shadow .2s;
-    }
-    .btn-ig:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(220,39,67,.38);}
     .avail-chip{
       margin-top:26px;display:inline-block;
       background:var(--white);border-radius:999px;
@@ -419,6 +492,27 @@
     footer .deco{font-size:10px;letter-spacing:5px;color:var(--pink-main);opacity:.5;margin-bottom:7px;}
     footer a{color:var(--pink-dark);text-decoration:none;}
 
+    /* ── TAG ── */
+    .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+    .tag{
+      background:linear-gradient(135deg,var(--pink-light),var(--peach));
+      color:var(--pink-dark);
+      padding:5px 14px;border-radius:999px;
+      font-size:.8rem;font-weight:600;
+      border:1px solid var(--pink-mid);
+    }
+
+    /* ── SCROLL ANIMATION ── */
+    .fade-up{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity .6s ease,transform .6s ease;
+    }
+    .fade-up.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
     /* ── RESPONSIVE ── */
     @media(max-width:720px){
       .hero{grid-template-columns:1fr;min-height:auto;}
@@ -427,17 +521,41 @@
       .illust-wrap{width:min(260px,78%);}
       .float-tag{display:none;}
       .service-grid{grid-template-columns:1fr 1fr;}
-      .rife-card{grid-template-columns:1fr;}
-      .about-grid{grid-template-columns:1fr;}
-      .hours-grid{grid-template-columns:1fr;}
       .trust-item{padding:18px 22px;}
+      .eyebrow{font-size:.72rem;letter-spacing:1px;padding:5px 14px;}
+      .hero h1{font-size:1.6rem;}
+      .hero-desc{font-size:.9rem;}
+    }
+    @media(max-width:560px){
+      .flow-grid{grid-template-columns:1fr;gap:24px;}
+      .flow-grid::before{display:none;}
+      .pain-grid{grid-template-columns:1fr;}
+      .toku-nigate{grid-template-columns:1fr;}
+      .stat-sep{display:none;}
+      .stat-mini{padding:6px 14px;}
     }
     @media(max-width:480px){
       .service-grid{grid-template-columns:1fr;}
+      .service-grid-2{grid-template-columns:1fr;}
+      .support-menu{grid-template-columns:1fr !important;}
     }
   </style>
 </head>
 <body>
+
+<!-- ══ NAV ══ -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">りずりん🐷</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#services">できること</a></li>
+      <li><a href="#about">わたしについて</a></li>
+      <li><a href="#flow">ご相談の流れ</a></li>
+      <li><a href="#contact" class="nav-cta">DMする</a></li>
+    </ul>
+  </div>
+</nav>
 
 <!-- ══ HERO ══ -->
 <header class="hero">
@@ -447,24 +565,34 @@
     <span class="eyebrow">✎𓂃 オンライン秘書 × フッ軽サポーター 𓂃✎</span>
 
     <h1>
-      あなたの「やりたい」を、<br>一緒に形にします。
-      <span class="name">りずりん🐷</span>
+      あなたの「やりたい」を、<br>一緒に形にします！🐷
     </h1>
 
     <p class="hero-desc">
-      スプシ管理・資料作成・リサーチ・スケジュール調整まで<br>
-      <strong>「即レス」と「思いやり」</strong>を軸に、全力でお応えします🫧
+      <strong>「早めのレスポンス」「思いやり」</strong>を大切に、<br>あなたの「笑顔」がさらに輝くお手伝いをさせてください🧸🪄<br><br>
+      頼んでもらえたら、張り切りすぎちゃうかも🐷
     </p>
 
     <div class="qual-row">
       <span class="qual">📊 簿記3級</span>
-      <span class="qual">📋 秘書検定3級</span>
-      <span class="qual">🧾 FP3級</span>
-      <span class="qual">🤖 スプシ × AI 勉強中</span>
+      <span class="qual">🤖 Claude 勉強中</span>
+      <span class="qual">🫧 応援・美容面談</span>
+      <span class="qual">👩‍💻 営業同行</span>
+    </div>
+
+    <!-- 実績ミニバー -->
+    <div class="stat-row">
+      <div class="stat-mini"><span class="sm-icon">🔁</span><span class="sm-num">100%</span><span class="sm-label">リピート率</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat-mini"><span class="sm-icon">🤝</span><span class="sm-num">4名</span><span class="sm-label">サポート実績</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat-mini"><span class="sm-icon">💌</span><span class="sm-num">1名</span><span class="sm-label">継続中</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat-mini"><span class="sm-icon">📅</span><span class="sm-num">4ヶ月</span><span class="sm-label">2025.12〜現在</span></div>
     </div>
 
     <div class="cta-row">
-      <a href="#contact" class="btn-primary">📩 お仕事のご依頼はこちら →</a>
+      <a href="#contact" class="btn-primary">📩 まずDMしてみる 📩</a>
       <a href="#services" class="btn-ghost">🔍 できることを見る</a>
     </div>
   </div>
@@ -472,9 +600,9 @@
   <div class="hero-right">
     <div class="illust-wrap">
       <img src="images/main.jpg" alt="りずりんのイラスト" />
-      <div class="float-tag">💌 即レス対応</div>
-      <div class="float-tag">📊 スプシ得意</div>
-      <div class="float-tag">🐷 フッ軽サポート</div>
+      <div class="float-tag">💬 これできる？</div>
+      <div class="float-tag">💖可愛いが大好き</div>
+      <div class="float-tag">詳しくは🦁DMにて♡</div>
     </div>
   </div>
 
@@ -484,188 +612,204 @@
 <!-- ══ TRUST BAR ══ -->
 <div class="trust-bar">
   <div class="trust-item"><span class="ti">📊</span>簿記3級取得</div>
-  <div class="trust-item"><span class="ti">📋</span>秘書検定3級取得</div>
-  <div class="trust-item"><span class="ti">⏰</span>平日18時〜＋土日対応</div>
+  <div class="trust-item"><span class="ti">🤖</span>Claude 勉強中</div>
+  <div class="trust-item"><span class="ti">⏰</span>平日18時〜／土日対応</div>
   <div class="trust-item"><span class="ti">💌</span>即レス・思いやり重視</div>
+  <div class="trust-item"><span class="ti">🛠️</span>Canva Pro / Claude Max</div>
 </div>
+
+<!-- ══ PAIN POINTS ══ -->
+<section class="pain-sec">
+  <div class="pain-inner">
+    <h2>こんな<span>お悩み</span>ありませんか？</h2>
+    <p class="pain-sub">こんなこと、感じていませんか？</p>
+    <div class="pain-grid">
+      <div class="pain-item"><span class="pi">😵‍💫</span>本業に集中したいのに事務作業が終わらない</div>
+      <div class="pain-item"><span class="pi">📝</span>チラシや提案資料、自分で作る時間がない</div>
+      <div class="pain-item"><span class="pi">🧾</span>見積書や請求書、つい後回しにしてしまう</div>
+      <div class="pain-item"><span class="pi">💬</span>人を雇うほどじゃないけど、誰かに「ちょっとだけ」頼みたい</div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+      <div class="pain-answer">🗂️ お仕事のことは、お任せ🐷</div>
+    </div>
+  </div>
+</section>
 
 <!-- ══ MAIN ══ -->
 <div class="wrap">
 
   <!-- Services -->
   <section class="sec" id="services">
-    <h2 class="sec-title">✎𓂃 お任せできること</h2>
-    <div class="service-grid">
-      <div class="service-card">
-        <span class="s-icon">📊</span>
-        <h3>データ管理・<br>スプレッドシート</h3>
-        <p>Googleスプレッドシートでの集計・整理・管理をお任せください</p>
-      </div>
+    <h2 class="sec-title">✎𓂃 私ができること</h2>
+    <p class="service-label">🗂️ 秘書サポート（事業主の方へ）</p>
+    <div class="service-grid" style="margin-bottom:20px;">
       <div class="service-card">
         <span class="s-icon">📝</span>
         <h3>資料・書類作成</h3>
-        <p>チラシ・見積書・名刺・提案資料などCanvaを使った制作も対応</p>
+        <p>チラシ・見積書・名刺・提案資料など<br>Canva PROで丁寧に仕上げます🎨<br><span style="font-size:.78rem;color:var(--brown-lt);">飲食店・日用品のチラシ実績あり</span></p>
       </div>
       <div class="service-card">
         <span class="s-icon">🔍</span>
-        <h3>リサーチ・<br>調査代行</h3>
-        <p>市場調査・競合分析・営業調査などの情報収集をサポート</p>
-      </div>
-      <div class="service-card">
-        <span class="s-icon">📅</span>
-        <h3>スケジュール・<br>顧客対応</h3>
-        <p>日程調整・メール対応・予約管理など秘書業務全般をお手伝い</p>
+        <h3>リサーチ・調査代行</h3>
+        <p>「これ調べといて」が得意です🔍<br>市場調査・競合分析・営業調査<br>大阪の美味しいお店や観光地も🐙</p>
       </div>
       <div class="service-card">
         <span class="s-icon">📸</span>
         <h3>SNS運用サポート</h3>
-        <p>Instagram運用・競合分析・クーポン発行など運用業務を支援</p>
+        <p>お風呂美容Instagram🛀🏻<br>（2年半運用 / 企業コラボあり）<br>代行→分析・PRパートナー選定</p>
       </div>
       <div class="service-card">
         <span class="s-icon">🧑‍💻</span>
-        <h3>その他バックオフィス</h3>
-        <p>在庫管理・給与明細発行など、こまごました事務作業もお気軽に</p>
+        <h3>こまごました作業</h3>
+        <p>スプシ管理・日程調整・予約管理<br>在庫管理・給与明細・請求書など<br>細かい作業もスピーディに対応します🙋</p>
       </div>
     </div>
-  </section>
 
-  <!-- Experience -->
-  <section class="sec" id="experience">
-    <h2 class="sec-title">🦁 これまでの経験</h2>
-    <div class="exp-grid">
-      <div class="exp-item"><span class="em">🛀</span>Instagram運用（フォロワー限定クーポン発行）</div>
-      <div class="exp-item"><span class="em">👩🏼‍💻</span>インスタ競合分析</div>
-      <div class="exp-item"><span class="em">📊</span>営業調査代行</div>
-      <div class="exp-item"><span class="em">🛍️</span>市場調査</div>
-      <div class="exp-item"><span class="em">📰</span>チラシ作成</div>
-      <div class="exp-item"><span class="em">🧑‍💻</span>見積書作成</div>
-      <div class="exp-item"><span class="em">📇</span>名刺作成</div>
-      <div class="exp-item"><span class="em">💴</span>給料明細発行</div>
-      <div class="exp-item"><span class="em">🧑‍💻</span>商品在庫振分</div>
-      <div class="exp-item"><span class="em">🎀</span>制服販売・受付スタッフ</div>
-    </div>
-  </section>
-
-  <!-- リベフェス -->
-  <section class="sec">
-    <h2 class="sec-title">🐷 リベフェス2025</h2>
-    <div class="card">
-      <h3 style="font-size:1.1rem;font-weight:700;color:var(--pink-dark);margin-bottom:12px;">No.F17「からあげ1番」サブリーダー担当</h3>
-      <p>お金の勉強フェス2025にてブースのサブリーダーとして参加。チームの取りまとめから受付・接客・運営サポートまで担当しました。</p>
-      <p>この経験が<strong>オンライン秘書への原点</strong>🪽</p>
-      <div class="tag-row" style="margin-top:14px;">
-        <span class="tag">🐷 サブリーダー</span>
-        <span class="tag">🎀 受付・接客</span>
-        <span class="tag">📋 運営サポート</span>
-        <span class="tag">🤝 チームワーク</span>
+    <p class="service-label">🫧 対話・面談サービス（友達感覚で誰かに話を聞いて欲しい方へ）</p>
+    <div class="service-card" style="border-color:var(--peach-mid);background:linear-gradient(145deg,#fff8f5,#fff0f2);max-width:100%;text-align:left;">
+      <div style="text-align:center;margin-bottom:16px;">
+        <span class="s-icon">🫧</span>
+        <h3>応援サポート面談<br><span style="font-size:.78rem;color:var(--brown-lt);font-weight:500;">30分 ¥1,500</span></h3>
       </div>
+      <div class="support-menu" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px;">
+        <div style="background:var(--pink-pale);border-radius:14px;padding:14px 12px;text-align:center;border:1px solid var(--pink-light);">
+          <span style="font-size:1.4rem;display:block;margin-bottom:6px;">💬</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--pink-dark);">「ちょっと聞いて」</span>
+          <p style="font-size:.75rem;color:var(--brown-lt);margin-top:4px;">誰かに話を聞いて欲しい、、、<br>そんな時は、話してね💭<br>（自己肯定感倍増計画しよ）</p>
+        </div>
+        <div style="background:var(--pink-pale);border-radius:14px;padding:14px 12px;text-align:center;border:1px solid var(--pink-light);">
+          <span style="font-size:1.4rem;display:block;margin-bottom:6px;">🛀🏻</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--pink-dark);">お風呂美容相談</span>
+          <p style="font-size:.75rem;color:var(--brown-lt);margin-top:4px;">あなたに合う入浴剤、<br>一緒に見つけよ🛀</p>
+        </div>
+        <div style="background:var(--pink-pale);border-radius:14px;padding:14px 12px;text-align:center;border:1px solid var(--pink-light);">
+          <span style="font-size:1.4rem;display:block;margin-bottom:6px;">💄</span>
+          <span style="font-size:.82rem;font-weight:700;color:var(--pink-dark);">垢抜け会議</span>
+          <p style="font-size:.75rem;color:var(--brown-lt);margin-top:4px;">「垢抜けたい」って気持ち、<br>一緒に叶えよ💄<br>（15人のコンサル経験あり）</p>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:.88rem;color:var(--brown-lt);">人間の素敵なところを見つけるのが趣味🐷<br>〜話を聞くのが大好き〜</p>
     </div>
   </section>
 
-  <!-- 得意・苦手 -->
-  <section class="sec" id="toku-nigate">
-    <h2 class="sec-title">✎𓂃 得意なこと・苦手なこと</h2>
+  <!-- About（統合：自己紹介 + 得意苦手 + 稼働時間） -->
+  <section class="sec" id="about">
+    <h2 class="sec-title">✎𓂃 わたしについて</h2>
+    <div class="card" style="margin-bottom:24px;">
+      <p>リベ大フェス2025の「からあげ１番」で、<br>
+      サブリーダーを経験したことをきっかけに🦄✨<br>
+      <span style="font-size:.88rem;color:var(--brown-lt);">（🦁に「唐揚げの中で１番美味しい」って言ってもらえました🤤）</span><br><br>
+      簿記３級の勉強を開始し、資格を取得📚<br>
+      12月より本格的に<strong>オンライン秘書</strong>としての活動を開始しました🫶🏻</p>
+      <p><strong>フッ軽で動くこと・人の役に立つこと・応援することが大好き♡</strong><br>
+      <strong>「頼んでよかった」</strong>って言ってもらえると、もうそれだけで幸せです🧸🪄</p>
+    </div>
+
     <div class="toku-nigate">
       <div class="tn-card">
         <h3>💪 得意なこと</h3>
         <ul>
-          <li>Googleスプレッドシートでのデータ管理📊</li>
-          <li>Canvaでの資料・デザイン作成🎨</li>
-          <li>顧客対応・スケジュール調整💌</li>
-          <li>物事を前向きにとらえ、言語化して行動すること</li>
-          <li>新しい環境にすぐ慣れる</li>
-          <li>最後までやり抜く力</li>
-          <li>人と仲良くなること🫶</li>
+          <li>毎日Claudeに触れて研究中👩‍💻</li>
+          <li>前向きに言語化して動くこと</li>
+          <li>新しい環境にすぐ慣れる（適応力は自信あり）</li>
+          <li>人と仲良くなること🫶（得意というか好き）</li>
         </ul>
       </div>
       <div class="tn-card nigate">
         <h3>🥺 苦手なこと</h3>
         <ul>
-          <li>力仕事</li>
+          <li>体力は、あるけど力仕事は苦手</li>
           <li>お化け👻</li>
-          <li>生魚<br><span style="font-size:.8rem;color:var(--brown-lt);">→ 茹で魚・焼き魚は大好き😋</span></li>
+          <li><span>生魚（海に溺れたような感覚になる）<br><span style="font-size:.8rem;color:var(--brown-lt);">（魚にお風呂入ってきてもらえれば大丈夫）<br>→ 茹で魚・焼き魚大好き🐟</span></span></li>
         </ul>
       </div>
     </div>
-  </section>
 
-  <!-- 作業環境 -->
-  <section class="sec" id="env">
-    <h2 class="sec-title">💻 作業環境</h2>
-    <div class="env-grid">
-      <div class="env-item">
-        <span class="e-icon">🎨</span>
-        <div class="e-name">Canva PRO</div>
-        <div class="e-desc">デザイン・資料作成</div>
-      </div>
-      <div class="env-item">
-        <span class="e-icon">🤖</span>
-        <div class="e-name">Claude Max</div>
-        <div class="e-desc">AI活用・業務効率化</div>
-      </div>
-      <div class="env-item">
-        <span class="e-icon">📱</span>
-        <div class="e-name">iPhone 17</div>
-        <div class="e-desc">即レス・機動力</div>
-      </div>
-      <div class="env-item">
-        <span class="e-icon">📊</span>
-        <div class="e-name">Google スプシ</div>
-        <div class="e-desc">データ管理・集計</div>
-      </div>
+    <!-- 稼働時間（コンパクト版） -->
+    <div class="hours-compact">
+      <div class="hc-item"><span class="hc-label">⏰ 平日</span><span class="hc-time">18:00〜22:00</span></div>
+      <div class="hc-sep"></div>
+      <div class="hc-item"><span class="hc-label">🌸 土日</span><span class="hc-time">終日対応可</span></div>
+      <div class="hc-sep"></div>
+      <span class="hc-note">💛 DMは平日の昼間でもお返事できます</span>
     </div>
   </section>
 
-  <!-- About + accent -->
-  <section class="sec" id="about">
-    <h2 class="sec-title">✎𓂃 わたしについて</h2>
-    <div class="card">
-      <p>リベフェスをきっかけに<strong>オンライン秘書</strong>を目指してスキルアップ中です。</p>
-      <p>現在は<strong>スプシとAIの勉強</strong>を日々積み重ね、より幅広い業務に対応できるよう準備しています。</p>
-      <p>フッ軽で動くこと・人の役に立つこと・応援することが大好き♡<br>
-      <strong>「お願いしてよかった」</strong>と言ってもらえるのが一番の喜びです🫧</p>
+</div>
+
+<!-- ══ FLOW ══ -->
+<div class="wrap">
+  <section class="sec" id="flow">
+    <h2 class="sec-title">🪽 ご相談の流れ</h2>
+    <div class="flow-grid">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <h3>DM</h3>
+        <p>「こんなことお願いできる？」だけでOK<br>内容が決まってなくても大丈夫です🐷</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <h3>無料ヒアリング30分<br><span style="font-size:.78rem;font-weight:400;color:var(--brown-lt);">（秘書業務の場合）</span></h3>
+        <p>無料相談でお伺いした内容をもとに、<br>お見積もりを作成・ご提案いたします👩‍💻<br>簡単な内容はDMのみでもOK🐷</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <h3>お仕事スタート</h3>
+        <p>あとはお任せください🫧<br>進捗もこまめにご報告します</p>
+      </div>
+    </div>
+    <div style="margin-top:24px;background:var(--white);border-radius:18px;padding:18px 22px;border:1.5px solid var(--pink-light);font-size:.88rem;text-align:center;color:var(--brown-lt);">
+      🫧 <strong style="color:var(--pink-dark);">応援サポート面談</strong> は<br>DMにて日程調整 → オンライン面談（30分 ¥1,500）
     </div>
   </section>
-
-  <!-- Hours -->
-  <section class="sec" id="hours">
-    <h2 class="sec-title">⏰ 稼働時間</h2>
-    <div class="hours-grid">
-      <div class="h-card">
-        <div class="day">平日</div>
-        <div class="time">18:00 〜 22:00</div>
-      </div>
-      <div class="h-card">
-        <div class="day">土日</div>
-        <div class="time">終日対応可 ♡</div>
-      </div>
-    </div>
-    <p class="h-note">💌 限られた時間でも「<strong>即レス</strong>」と「<strong>思いやり</strong>」を大切にします🫧</p>
-  </section>
-
 </div>
 
 <!-- ══ CONTACT ══ -->
 <section class="contact-sec" id="contact">
   <div class="contact-inner">
-    <h2>お仕事のご依頼・<br>ご相談はお気軽に🪽</h2>
-    <p class="sub">スプシ管理・リサーチ・資料作成・スケジュール調整など</p>
-    <p class="dm-text">✎𓂃 お仕事のご依頼はDMにてお願いします 𓂃✎</p>
-    <p class="sub" style="margin-top:14px;">💬 「こんなことできる？」のお問い合わせも大歓迎です♡</p>
+    <h2>「ちょっと相談してみようかな」<br>そう思ったらDMください🪽</h2>
+    <p class="sub">まずは気軽に話しかけてくれるだけでOKです🌸</p>
 
-    <div class="contact-btns">
-      <a href="#services" class="btn-ghost">🔍 できることを見る</a>
+    <div style="margin:28px auto;max-width:420px;background:white;border-radius:20px;padding:22px 26px;box-shadow:0 4px 20px rgba(224,122,138,.13);border:1.5px solid #f4b8c2;text-align:left;">
+      <p style="font-size:.85rem;font-weight:700;color:var(--pink-dark);margin-bottom:12px;">💬 こんな方はぜひDMしてください</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+        <li style="font-size:.88rem;display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--pink-main);">◯</span>「ちょっと相談してみたい」</li>
+        <li style="font-size:.88rem;display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--pink-main);">◯</span>「こんなことできる？って聞いてみたい」</li>
+        <li style="font-size:.88rem;display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--pink-main);">◯</span>「料金や内容をもう少し知りたい」</li>
+        <li style="font-size:.88rem;display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--pink-main);">◯</span>「なんとなく相談してみたい」</li>
+      </ul>
     </div>
 
-    <div class="avail-chip">⏰ 平日 18:00〜22:00 ／ 土日終日 対応可</div>
+    <p class="dm-text">✎𓂃 まずは気軽にDMしてみてください 𓂃✎</p>
+    <p class="sub" style="margin-top:12px;">どんな内容でも、まず聞いてみてください🐷</p>
+
+    <div class="avail-chip" style="margin-top:28px;">⏰ 平日 18:00〜22:00 ／ 土日終日 対応可</div>
   </div>
 </section>
 
 <footer>
   <div class="deco">𓂃 𓈒 𓏸 𓂃 𓈒 𓏸 𓂃 𓈒 𓏸</div>
   <p><strong>りずりん🐷</strong> ｜ オンライン秘書・フッ軽サポーター</p>
-  <p style="margin-top:5px;">📩 お仕事のご依頼はDMにてお気軽にどうぞ🫧</p>
+  <p style="margin-top:5px;">最後まで見てくださり、ありがとうございます🦄✨</p>
 </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  // fade-upクラスを対象セクションに追加
+  document.querySelectorAll('.sec,.service-card,.pain-item,.tn-card,.flow-step,.card,.hours-compact,.pain-answer').forEach(el=>{
+    el.classList.add('fade-up');
+  });
+  // Intersection Observer
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+});
+</script>
 </body>
 </html>
