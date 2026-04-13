@@ -280,10 +280,11 @@
       padding:18px 20px;
       font-size:.9rem;
       text-align:left;
-      display:flex;align-items:flex-start;gap:10px;
+      display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;
       line-height:1.7;
     }
     .pain-item .pi{flex-shrink:0;font-size:1.2rem;}
+    .pain-item span[style]{flex-basis:100%;}
     .pain-answer{
       display:inline-block;
       background:linear-gradient(135deg,var(--pink-light),var(--peach));
@@ -624,7 +625,7 @@
     <h2>こんな<span>お悩み</span>ありませんか？</h2>
     <p class="pain-sub">こんなこと、感じていませんか？</p>
     <div class="pain-grid">
-      <div class="pain-item"><span class="pi">😵‍💫</span>本業に集中したいのに<br>事務作業が終わらない</div>
+      <div class="pain-item"><span class="pi">😵‍💫</span>忙しい日に限って、人手が足りない<br><span style="color:var(--brown-lt);font-size:.75em;display:block;margin-top:4px;">（土日の単発の販売のお手伝いに）</span></div>
       <div class="pain-item"><span class="pi">📝</span>チラシや提案資料、自分で作る時間がない</div>
       <div class="pain-item"><span class="pi">🧾</span>見積書や請求書、つい後回しにしてしまう</div>
       <div class="pain-item"><span class="pi">💬</span>人を雇うほどじゃないけど、誰かに「ちょっとだけ」頼みたい</div>
@@ -711,8 +712,8 @@
         <ul>
           <li>毎日Claudeに触れて研究中👩‍💻</li>
           <li>前向きに言語化して動くこと</li>
-          <li>新しい環境にすぐ慣れる（適応力は自信あり）</li>
-          <li>人と仲良くなること🫶（得意というか好き）</li>
+          <li>新しい環境にすぐ慣れる</li>
+          <li>人と仲良くなること🫶</li>
         </ul>
       </div>
       <div class="tn-card nigate">
@@ -759,7 +760,7 @@
       </div>
     </div>
     <div style="margin-top:24px;background:var(--white);border-radius:18px;padding:18px 22px;border:1.5px solid var(--pink-light);font-size:.88rem;text-align:center;color:var(--brown-lt);">
-      🫧 <strong style="color:var(--pink-dark);">応援サポート面談</strong> は<br>DMにて日程調整 → オンライン面談（30分 ¥1,500）
+      🫧 <strong style="color:var(--pink-dark);">応援サポート面談</strong> は<br>DMにて日程調整<br>→ オンライン面談（30分 ¥1,500）
     </div>
   </section>
 </div>
